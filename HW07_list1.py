@@ -22,8 +22,11 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    # +++your code here+++
-    return
+    count = 0
+    for word in words:
+        if len(word) >= 2 and word[0] == word[len(word)-1]:
+            count += 1
+    return count
 
 
 # B. front_x
@@ -34,9 +37,31 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    # +++your code here+++
-    return
+    normal_list = []
+    x_list = []
+    for word in words:
+        # print(idx, word)
 
+        if word[0] == 'x':
+            x_list.append(word)
+        else:
+            normal_list.append(word)
+
+    normal_list.sort()
+    x_list.sort()
+    return x_list + normal_list
+
+def front_x2(words):
+    normal_list = []
+    x_list = []
+    for each in words:
+        print(idx, word)
+
+        if word[0] == 'x':
+            x_list.append(word)
+        else:
+            normal_list.append(word)
+    return sorted(x_list) + sorted(normal_list)
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -44,9 +69,19 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
+
+def get_last_element(tuple):
+    return tuple[len(tuple)-1]
+
 def sort_last(tuples):
-    # +++your code here+++
-    return
+    # use a key with the sorted function
+    # print(sorted(lst))
+    # print(sortf(lst, key = len()))
+    # for each_tuple in tuples:
+    #     print(each_tuple)
+    #     print('Last element: ', get_last_element(each_tuple))
+    # print(sorted(tuples, key=get_last_element))
+    return  sorted(tuples, key=get_last_element)
 
 
 # Simple provided test() function used in main() to print
@@ -56,8 +91,7 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('%s got: %s expected: %s'.format(prefix, repr(got), repr(expected)))
-
+    print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
 
 # Calls the above functions with interesting inputs.
 def main():

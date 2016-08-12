@@ -1,6 +1,5 @@
 import random
 
-
 # open roster
 def get_names():
     with open("roster.txt", "r") as roster:
